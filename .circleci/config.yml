@@ -23,9 +23,10 @@ jobs:
             . venv/bin/activate
             pip install -r requirements/dev.txt
       - run:
+          name: Deploy model to Modzy
           command: |
             . venv/bin/activate
-            python modzy_deploy.py test
+            python modzy_deploy.py << pipeline.id >> << pipeline.number >>
 
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
